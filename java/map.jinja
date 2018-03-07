@@ -28,7 +28,7 @@
         'home_dir': '/usr/lib/java',
         'build': java_build,
         'pkgs': ['java-1.' + java_version + '.0-openjdk'],
-        'dev_pkgs': ['java-1.' + java_version + '.0-openjdk'],
+        'dev_pkgs': ['java-1.' + java_version + '.0-openjdk-devel'],
     },
 }, merge=salt['pillar.get']('java:environment')) %}
 

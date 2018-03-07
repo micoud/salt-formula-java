@@ -15,4 +15,9 @@ java_dev_packages:
 java_home_symlink:
   file.symlink:
   - name: {{ environment.home_dir }}
+  {%- if grains['os_family']|lower == 'debian' %}
   - target: /usr/lib/jvm/java-{{ environment.version }}-openjdk-amd64
+  {%- elif grains['os_family']|lower == 'redhat' %}
+  - target: /usr/lib/jvm/java-{{ environment.version }}-openjdk
+  {%- endif %}
+  - unless: test -d {{ environment.home_dir }}
